@@ -1,0 +1,3 @@
+# TaMDa
+
+Terminal Markdown renderer
