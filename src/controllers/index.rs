@@ -1,4 +1,4 @@
-use clap::Args;
+use clap::{Args, ValueHint};
 use minus::{Pager, page_all};
 
 use crate::util::{handler::Handler, universal_source::UniversalSource};
@@ -6,7 +6,11 @@ use crate::util::{handler::Handler, universal_source::UniversalSource};
 #[derive(Args, Clone)]
 #[clap(rename_all = "kebab-case")]
 pub(crate) struct IndexController {
-    /// Source of file: URL or file path. TaMDa reads markdown source from stdin if not specified.
+    /// Source of the Markdown content
+    ///
+    /// Can be a path to a local file or an HTTP/HTTPS URL.
+    /// If not specified, reads Markdown from standard input.
+    #[clap(value_hint = ValueHint::AnyPath)]
     source: Option<String>,
 }
 
